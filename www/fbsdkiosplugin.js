@@ -1,11 +1,11 @@
 var exec = require('cordova/exec');
 
-exports.initialize = function (cptoken, cpgroupname, cpname, success, error) {
-    exec(success, error, 'fbsdkiosplugin', 'initialize', [cptoken,cpgroupname,cpname]);
+exports.initialize = function (token, cptoken, cpgroupname, cpname, success, error) {
+    exec(success, error, 'fbsdkiosplugin', 'initialize', [token,cptoken,cpgroupname,cpname]);
 };
 
-exports.doPostToken = function (arg0, success, error) {
-    exec(success, error, 'fbsdkiosplugin', 'doPostToken', [arg0]);
+exports.doPostToken = function (token, success, error) {
+    exec(success, error, 'fbsdkiosplugin', 'doPostToken', [token]);
 };
 
 exports.pageView = function (utmdt, utmp, success, error) {
@@ -40,8 +40,8 @@ exports.postCart = function (arg0, success, error) {
     exec(success, error, 'fbsdkiosplugin', 'postCart', [arg0]);
 };
 
-exports.postCustomCart = function (customCarts, success, error) {
-    exec(success, error, 'fbsdkiosplugin', 'postCustomCart', [customCarts]);
+exports.postCustomCart = function (cartItems, success, error) {
+    exec(success, error, 'fbsdkiosplugin', 'postCustomCart', [cartItems]);
 };
 
 exports.postContactEmail = function (arg0, success, error) {

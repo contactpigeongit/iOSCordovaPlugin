@@ -113,6 +113,9 @@ public class cpMainParameters: NSObject {
 }
 @objc(cpOrderData)
 public class cpOrderData:Codable {
+    public init() {
+        
+    }
     public init(utmtid: String, utmtto: Double, items: [cpOrderItem]) {
         self.utmtid = utmtid
         self.utmtto = utmtto
@@ -467,6 +470,16 @@ public class cpConnectionService{
 
         postCartToCP(cartJson:json!, isContained:cpMainParameters.shared.isCartSelfContained)
     }
+    @objc
+    public func postCustomCart(cartItems: [cpCartItem]) {
+        let jsonEncoder = JSONEncoder()
+        let jsonData = try! jsonEncoder.encode(cartItems)
+        let json = String(data: jsonData, encoding: String.Encoding.utf8)
+        printMsg(message: "postCustomCart json:\(json ?? "")")
+
+        postCartToCP(cartJson:json!, isContained:cpMainParameters.shared.isCartSelfContained)
+    }
+    
     @objc
     public func emptyCart(){
         cpMainParameters.shared.curCartItems.removeAll()
